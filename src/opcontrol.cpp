@@ -38,8 +38,8 @@ void opcontrol() {
   linetrackerR.calibrate();
   gyro.calibrate();
   int FLIP_OFF = 0;
-  int FLIP_HOLD = -11;
-  int FLIP_ON = -81;
+  int FLIP_HOLD = -15;
+  int FLIP_ON = -90;
   while (true)
 	{
      // pros::lcd::initialize();
