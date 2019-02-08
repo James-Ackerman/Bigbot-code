@@ -1,8 +1,4 @@
 #include "main.h"
-#include "okapi/api.hpp"
-#include "definitions.hpp"
-
-using namespace okapi;
 
 //Better Button Names
 ControllerButton RightBumperUP(ControllerDigital::R1);
