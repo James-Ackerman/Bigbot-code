@@ -1,12 +1,5 @@
-#ifndef definitions_hpp
-#define definitions_hpp
-//#pragma once //TODO: test this to see if it works without having to use ifndef etc.
-
 #include "main.h"
-#include "okapi/api.hpp"
-
- using namespace okapi;
-
+#include "aon/definitions.h"
 
  //Sensor definitions
  const int DRIVE_PNEUMATIC = 1;     //port A //change to A if this doesn't work
@@ -25,8 +18,6 @@
  const int DRIVE_MOTOR_RIGHT_1 = 4;   //1,2,3 = Front, Middle, Back
  const int DRIVE_MOTOR_RIGHT_2 = -5;
  const int DRIVE_MOTOR_RIGHT_3 = 6;
- const auto WHEEL_DIAMETER = 4_in;
- const auto CHASSIS_WIDTH = 15.24_in;
 
  // Lift definition
  // Assume this is correct for now
@@ -58,19 +49,6 @@
  // TODO: Update with the real robot values
  //const int CONVEYOR_MOTOR = 14;
 
- //const int PUNCHER_ANGLE_MOTOR = 15;
- // Controller object creation
- //TODO: Reverse motors that need to be reversed
- auto driveController = ChassisControllerFactory::create(
-   {DRIVE_MOTOR_RIGHT_1, DRIVE_MOTOR_RIGHT_2, DRIVE_MOTOR_RIGHT_3},
-   {DRIVE_MOTOR_LEFT_1, DRIVE_MOTOR_LEFT_2, DRIVE_MOTOR_LEFT_3},
-   AbstractMotor::gearset::green,
-   {WHEEL_DIAMETER, CHASSIS_WIDTH}
- );
-
- auto liftController = AsyncControllerFactory::posIntegrated(
-   {LIFT_MOTOR_RIGHT, LIFT_MOTOR_LEFT}
- );
 
  //For Driver Control height buttons
  //TODO: Find actual low and high goal values in degrees (TUNING)
@@ -78,36 +56,3 @@
  const int LOW_GOAL_HEIGHT = 200;   //low goal is 69% of high goal more or less but this is in degrees so idk
  const int HIGH_GOAL_HEIGHT = 280;
  const int DROP_HEIGHT = 20;
-
- auto rotatorController = AsyncControllerFactory::posIntegrated(ROTATOR_MOTOR_RIGHT); //{ROTOATOR_MOTOR_RIGHT,ROTATOR_MOTOR_LEFT}
-
- // auto liftController = AsyncControllerFactory::posPID(
- //   {LIFT_MOTOR_RIGHT, LIFT_MOTOR_LEFT},
- //   liftkP, liftkI, liftkD
- // );
-
- // auto intakeController = AsyncControllerFactory::velIntegrated(
- //   {INTAKE_MOTOR_RIGHT,INTAKE_MOTOR_LEFT}
- // );
-
-//  auto rotatorController = AsyncControllerFactory::posPID(
-// 	{ROTATOR_MOTOR_RIGHT,ROTATOR_MOTOR_LEFT},
-//   flipkP, flipkI, flipkD
-// );
-
- //auto puncherController = AsyncControllerFactory::posIntegrated(PUNCHER_MOTOR_RIGHT);
-
- //auto puncher_angleController = AsyncControllerFactory::posIntegrated(PUNCHER_ANGLE_MOTOR);
-
- //auto conveyorController = AsyncControllerFactory::velIntegrated(CONVEYOR_MOTOR);
-
-
-
-pros::ADIDigitalOut piston(DRIVE_PNEUMATIC);         //Piston on DRIVE_PNEUMATIC port
-pros::ADILineSensor linetrackerL(LINE_TRACKER_LEFT); //Line tracker on LINE_TRACKER_LEFT port
-pros::ADILineSensor linetrackerR(LINE_TRACKER_RIGHT); //Line tracker on LINE_TRACKER_LEFT port
-pros::ADIAnalogIn gyro (GYRO_PORT);
-pros::ADIUltrasonic ultrasonic1(ULTRASONIC_IN, ULTRASONIC_OUT);
-
-
-#endif /* end of include guard:  */
