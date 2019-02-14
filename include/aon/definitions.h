@@ -3,7 +3,7 @@
 #include "main.h"
 
 // Sensor declarations
-const int DRIVE_PNEUMATIC = 1;
+const int DRIVE_PNEUMATIC = 8;
 const int LINE_TRACKER_LEFT = 2;
 const int LINE_TRACKER_RIGHT = 3;
 const int GYRO_PORT = 4;
@@ -71,7 +71,8 @@ const int HIGH_GOAL_HEIGHT = 300;
 const int DROP_HEIGHT = 20;
 
 // ADI declarations
-inline pros::ADILineSensor linetrackerL(LINE_TRACKER_LEFT); //Line tracker on LINE_TRACKER_LEFT port
-inline pros::ADILineSensor linetrackerR(LINE_TRACKER_RIGHT); //Line tracker on LINE_TRACKER_LEFT port
-inline pros::ADIAnalogIn gyro (GYRO_PORT);
-inline pros::ADIUltrasonic ultrasonic1(ULTRASONIC_IN, ULTRASONIC_OUT);
+//inline pros::ADIDigitalOut piston (DRIVE_PNEUMATIC);
+// inline pros::ADILineSensor linetrackerL(LINE_TRACKER_LEFT); //Line tracker on LINE_TRACKER_LEFT port
+// inline pros::ADILineSensor linetrackerR(LINE_TRACKER_RIGHT); //Line tracker on LINE_TRACKER_LEFT port
+// inline pros::ADIAnalogIn gyro (GYRO_PORT);
+// inline pros::ADIUltrasonic ultrasonic1(ULTRASONIC_IN, ULTRASONIC_OUT);

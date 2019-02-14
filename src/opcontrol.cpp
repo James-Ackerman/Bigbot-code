@@ -14,20 +14,20 @@ ControllerButton ButtonDOWN(ControllerDigital::down);
 ControllerButton ButtonLEFT(ControllerDigital::left);
 ControllerButton ButtonRIGHT(ControllerDigital::right);
 
-///////////////////////////////////OPCONTROL///////////////////////////////////////////////////
+//////////////////////////////////OPCONTROL///////////////////////////////////////////////////
 void opcontrol() {
 
   Controller controller;
   int CURRENT_HEIGHT = 0;                  //For Lift
-  pros::ADIDigitalOut piston(DRIVE_PNEUMATIC);
   bool STATE = LOW;                        //For Pneumatics //Change to false if this doesn't not work
   bool FLIP_STATE = 0;
-  linetrackerL.calibrate();
-  linetrackerR.calibrate();
-  gyro.calibrate();
+  // linetrackerL.calibrate();
+  // linetrackerR.calibrate();
+  // gyro.calibrate();
   bool complexCompleted = true;
   MotorGroup lift({LIFT_MOTOR_RIGHT, LIFT_MOTOR_LEFT});
   int flipHeight = 50;
+  pros::ADIDigitalOut piston (DRIVE_PNEUMATIC);
   while (true)
 	{
     // Chassis control

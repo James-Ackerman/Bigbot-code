@@ -11,36 +11,61 @@
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+pros::ADIDigitalOut piston (DRIVE_PNEUMATIC);
+
 void autonomous() {
-  //if(liftController.isDisabled()){
-  //  liftController.flipDisable();
-  //}
+  piston.set_value(LOW);
   liftController.setTarget(50);
   liftController.waitUntilSettled();
   driveController.setMaxVelocity(130);
   driveController.moveDistance(-46_in);
   driveController.turnAngle(-45_deg);
   liftController.setTarget(0);
-  driveController.setMaxVelocity(80);
+  driveController.setMaxVelocity(40);
   driveController.moveDistance(27_in);
 
   liftController.setTarget(40);
   driveController.setMaxVelocity(30);
-  driveController.turnAngle(60_deg);
+  driveController.turnAngle(70_deg);
   driveController.setMaxVelocity(80);
-  driveController.moveDistance(36_in);
+  driveController.moveDistance(37_in);
   driveController.setMaxVelocity(50);
-  driveController.turnAngle(75_deg);
+  driveController.turnAngle(65_deg);
 
+  // driveController.moveDistance(3_in);
+  // driveController.moveDistance(-3_in);
   liftController.setTarget(320);
   liftController.waitUntilSettled();
   rotatorController.setTarget(FLIP_ON);
-  driveController.moveDistance(13_in);
+  rotatorController.waitUntilSettled();
+  driveController.moveDistance(6_in);
+  pros::delay(500);
   liftController.setTarget(280);
-  driveController.moveDistance(-13_in);
+  driveController.moveDistance(-10_in);
+  rotatorController.setTarget(FLIP_OFF);
+  rotatorController.waitUntilSettled();
 
   liftController.setTarget(0);
   driveController.setMaxVelocity(130);
-  driveController.turnAngle(95_deg);
-  driveController.moveDistance(-58_in);
+  driveController.turnAngle(90_deg);
+
+  driveController.moveDistance(-64_in);
+  driveController.moveDistance(2_in);
+  driveController.turnAngle(90_deg);
+  driveController.moveDistance(-8_in);
+  driveController.setMaxVelocity(80);
+  driveController.moveDistance(24_in);
+  driveController.setMaxVelocity(40);
+  driveController.moveDistance(16_in);
+  liftController.setTarget(240);
+  liftController.waitUntilSettled();
+  rotatorController.setTarget(FLIP_ON);
+  driveController.moveDistance(-12_in);
+  driveController.turnAngle(90_deg);
+  liftController.setTarget(197);
+  driveController.moveDistance(-10_in);
+  rotatorController.setTarget(FLIP_OFF);
+  rotatorController.waitUntilSettled();
+  liftController.setTarget(0);
+  driveController.turnAngle(-110_deg);
 }
