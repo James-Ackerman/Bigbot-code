@@ -2,6 +2,9 @@
 
 #include "main.h"
 
+// Auto selector
+const int MAX_AUTO = 2;
+
 // Sensor declarations
 const int DRIVE_PNEUMATIC = 8;
 const int LINE_TRACKER_LEFT = 2;
@@ -67,10 +70,11 @@ inline auto rotatorController = AsyncControllerFactory::posIntegrated(
 // For Driver Control height buttons
 const int STARTING_HEIGHT = 10;
 const int LOW_GOAL_HEIGHT = 197;
-const int HIGH_GOAL_HEIGHT = 300;
+const int HIGH_GOAL_HEIGHT = 285;
 const int DROP_HEIGHT = 20;
 
 // ADI declarations
+inline pros::ADIDigitalOut catapult (7);
 //inline pros::ADIDigitalOut piston (DRIVE_PNEUMATIC);
 // inline pros::ADILineSensor linetrackerL(LINE_TRACKER_LEFT); //Line tracker on LINE_TRACKER_LEFT port
 // inline pros::ADILineSensor linetrackerR(LINE_TRACKER_RIGHT); //Line tracker on LINE_TRACKER_LEFT port

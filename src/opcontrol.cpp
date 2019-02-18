@@ -14,13 +14,14 @@ ControllerButton ButtonDOWN(ControllerDigital::down);
 ControllerButton ButtonLEFT(ControllerDigital::left);
 ControllerButton ButtonRIGHT(ControllerDigital::right);
 
-//////////////////////////////////OPCONTROL///////////////////////////////////////////////////
+//////////////////////////////OPCONTROL///////////////////////////////////////////////////
 void opcontrol() {
 
   Controller controller;
   int CURRENT_HEIGHT = 0;                  //For Lift
   bool STATE = LOW;                        //For Pneumatics //Change to false if this doesn't not work
   bool FLIP_STATE = 0;
+  bool CAT_STATE = LOW;
   // linetrackerL.calibrate();
   // linetrackerR.calibrate();
   // gyro.calibrate();
@@ -28,18 +29,22 @@ void opcontrol() {
   MotorGroup lift({LIFT_MOTOR_RIGHT, LIFT_MOTOR_LEFT});
   int flipHeight = 50;
   pros::ADIDigitalOut piston (DRIVE_PNEUMATIC);
+  pros::ADIDigitalOut catapult (7);
   while (true)
 	{
     // Chassis control
     driveController.arcade(controller.getAnalog(ControllerAnalog::leftY), -controller.getAnalog(ControllerAnalog::leftX));
 
     // Transmission
-    if ((abs(controller.getAnalog(ControllerAnalog::leftY)) > 0.1 ||
-    abs(controller.getAnalog(ControllerAnalog::leftX)) > 0.1) &&
-    LeftBumperUP.isPressed() &&
-    LeftBumperDOWN.changedToPressed()) {
+    if (LeftBumperUP.changedToPressed()) {
          STATE = !STATE;
          piston.set_value(STATE);
+    }
+
+    // Catapulta
+    if(ButtonUP.changedToPressed()) {
+      CAT_STATE = !CAT_STATE;
+      catapult.set_value(CAT_STATE);
     }
 
     // Flipper

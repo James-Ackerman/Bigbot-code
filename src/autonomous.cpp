@@ -14,11 +14,11 @@
 pros::ADIDigitalOut piston (DRIVE_PNEUMATIC);
 
 void autonomous() {
-  piston.set_value(LOW);
-  liftController.setTarget(50);
-  liftController.waitUntilSettled();
+  //liftController.setTarget(50);
+  //liftController.waitUntilSettled();
+  driveController.moveDistance(5_in);
   driveController.setMaxVelocity(130);
-  driveController.moveDistance(-46_in);
+  driveController.moveDistance(-47_in);
   driveController.turnAngle(-45_deg);
   liftController.setTarget(0);
   driveController.setMaxVelocity(40);
@@ -38,34 +38,48 @@ void autonomous() {
   liftController.waitUntilSettled();
   rotatorController.setTarget(FLIP_ON);
   rotatorController.waitUntilSettled();
-  driveController.moveDistance(6_in);
+  driveController.setMaxVelocity(30);
+  driveController.moveDistance(4_in);
+  driveController.setMaxVelocity(50);
   pros::delay(500);
-  liftController.setTarget(280);
-  driveController.moveDistance(-10_in);
+  liftController.setTarget(278);
+  liftController.waitUntilSettled();
+  pros::delay(500);
+  driveController.moveDistance(-12_in);
   rotatorController.setTarget(FLIP_OFF);
   rotatorController.waitUntilSettled();
 
   liftController.setTarget(0);
   driveController.setMaxVelocity(130);
-  driveController.turnAngle(90_deg);
+  driveController.turnAngle(91.5_deg);
 
   driveController.moveDistance(-64_in);
+  pros::delay(5000);
   driveController.moveDistance(2_in);
   driveController.turnAngle(90_deg);
-  driveController.moveDistance(-8_in);
-  driveController.setMaxVelocity(80);
-  driveController.moveDistance(24_in);
-  driveController.setMaxVelocity(40);
-  driveController.moveDistance(16_in);
+  //driveController.moveDistance(-12_in);
+  driveController.forward(-10000);
+  pros::delay(1000);
+  driveController.forward(0);
+  driveController.setMaxVelocity(60);
+  driveController.moveDistance(44_in);
   liftController.setTarget(240);
   liftController.waitUntilSettled();
-  rotatorController.setTarget(FLIP_ON);
-  driveController.moveDistance(-12_in);
+  driveController.moveDistance(-14_in);
   driveController.turnAngle(90_deg);
+  rotatorController.setTarget(FLIP_ON);
+  rotatorController.waitUntilSettled();
   liftController.setTarget(197);
+  liftController.waitUntilSettled();
+  pros::delay(500);
   driveController.moveDistance(-10_in);
   rotatorController.setTarget(FLIP_OFF);
   rotatorController.waitUntilSettled();
   liftController.setTarget(0);
-  driveController.turnAngle(-110_deg);
+  driveController.turnAngle(-120_deg);
+  driveController.moveDistance(24_in);
+  liftController.setTarget(40);
+  pros::delay(500);
+  driveController.moveDistance(-10_in);
+  rotatorController.setTarget(FLIP_OFF);
 }

@@ -1,13 +1,12 @@
 #include "main.h"
 
+int autoSel;
+
 void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
-	} else {
-		pros::lcd::clear_line(2);
-	}
+	autoSel++;
+	if(autoSel > MAX_AUTO) { autoSel = 0; }
+	pros::lcd::clear_line(2);
+	pros::lcd::print(2, "Auto selected = %d", autoSel);
 }
 
 /**
@@ -19,7 +18,7 @@ void on_center_button() {
 void initialize() {
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "Hello, I am Eduardo's Dingo!");
-
+	autoSel = 0;
 	pros::lcd::register_btn1_cb(on_center_button);
 }
 
